@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name="opportunity")
 @Data
-public class OportunityEntity {
+public class OpportunityEntity {
 
     @Id
     @GeneratedValue
