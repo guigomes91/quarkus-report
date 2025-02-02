@@ -27,5 +27,4 @@ public class OportunityEntity {
 
     @Column(name = "last_currency_quotation")
     private BigDecimal lastDollarQuotation;
-
 }
