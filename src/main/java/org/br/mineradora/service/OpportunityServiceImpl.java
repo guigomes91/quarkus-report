@@ -27,8 +27,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 
     @Override
     public void buildOpportunity(ProposalDTO proposal) {
-
-        List<QuotationEntity> quotationEntities = quotationRepository.findAll().list();
+        var quotationEntities = quotationRepository.findAll().list();
         Collections.reverse(quotationEntities);
 
         OpportunityEntity opportunity = new OpportunityEntity();
@@ -39,24 +38,20 @@ public class OpportunityServiceImpl implements OpportunityService {
         opportunity.setLastDollarQuotation(quotationEntities.get(0).getCurrencyPrice());
 
         opportunityRepository.persist(opportunity);
-
     }
 
     @Override
     @Transactional
     public void saveQuotation(QuotationDTO quotation) {
-
         QuotationEntity createQuotation = new QuotationEntity();
         createQuotation.setDate(new Date());
         createQuotation.setCurrencyPrice(quotation.getCurrencyPrice());
 
         quotationRepository.persist(createQuotation);
-
     }
 
     @Override
     public List<OpportunityDTO> generateOpportunityData() {
-
         List<OpportunityDTO> opportunities = new ArrayList<>();
         opportunityRepository
                 .findAll()
